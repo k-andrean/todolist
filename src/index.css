@@ -89,3 +89,23 @@ dialog {
 li{
     list-style-type: none;
 }
+
+.form{
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px; /* Adjust the top distance as needed */
+    right: 15px; /* Adjust the right distance as needed */
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Optional: Add some styling for a better look */
+.close-button:hover {
+    color: #000;
+}

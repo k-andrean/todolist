@@ -1,6 +1,4 @@
-import { createCheckboxContainer, createCard, createEmptyCard } from "./create.js";
-import { removeCardElements } from "./utility.js";
-import { contentElementsMap } from '../index.js';
+import { createCheckboxContainer } from "./create.js";
 import '../css/content.css';
 
 export function updateCard(taskHandler, removedTaskId, taskelementsMap) {
@@ -41,44 +39,6 @@ export function updateCard(taskHandler, removedTaskId, taskelementsMap) {
         }
     });
 
-}
-
-
-export function updateRemainingContent() {
-    const contentContainer = document.querySelector('.main-content');
-
-    removeCardElements(contentContainer);
-    
-    // Loop through contentElementMap and re-add card elements to the content container
-    contentElementsMap.forEach((cardDiv) => {
-        contentContainer.appendChild(cardDiv);
-    });
-
-    const emptyCard = createEmptyCard();
-
-    contentContainer.appendChild(emptyCard);
-
-
-}
-
-export function updateAddContent(taskStorage) {
-    const contentContainer = document.querySelector('.main-content');
-
-    removeCardElements(contentContainer);
-
- 
-
-    taskStorage.getAllTaskHandlers().forEach((taskHandler) => {
-        const cardDiv = createCard(taskHandler);
-        contentContainer.appendChild(cardDiv);
-    });
-
-    const emptyCard =  createEmptyCard();
-
-    contentContainer.appendChild(emptyCard);
-
-
-    
 }
 
 

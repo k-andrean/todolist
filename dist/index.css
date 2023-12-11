@@ -6,6 +6,8 @@ html, body{
 
     height: 100%;
     width: 100%;
+
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .container{
@@ -17,12 +19,18 @@ html, body{
     
 }
 
+
 .header{
     
     display: flex;
 
     justify-content: space-between;
 
+}
+
+.website-header,
+.notif-text {
+    color: coral;
 }
 
 .left-header{
@@ -47,29 +55,34 @@ html, body{
     height: 30px;
 }
 
+.sorting-container {
+    position: relative;
+}
+
+
 .sorting-icon{
 
     width: 20px;
     height: 20px;
-}
 
-.sorting-container {
-    position: relative;
 }
   
 .sorting-dropdown {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: -450%;
+
+    color: cadetblue;
 }
   
-.sorting-dropdown.show {
+.sorting-container.show-dropdown .sorting-dropdown {
     display: block;
 }
 
 .main-content{
-    background-color:burlywood;
+    background-color:rgb(232, 208, 148);
+    position: relative;
 }
 
 dialog {
@@ -91,42 +104,38 @@ li{
 }
 
 li + li{
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
-.radio-option{
-    display: flex;
-
-    margin-top: 1rem;
+.dialog{
+    position: relative;
 }
 
-.submit-task{
-    margin-top: 1rem;
-}
-
-
-/* Reset radio button styles */
-input[type="radio"] {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 14px;
-    height: 14px;
-    border: 2px solid #333;
-    border-radius: 50%;
-    outline: none;
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 10px; 
     cursor: pointer;
-  }
-  
-  /* Style the label for better alignment */
-  label {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  
-  /* Style when the radio button is checked */
-  input[type="radio"]:checked {
-    background-color: #333;
-    border-color: #333;
-    /* You can customize the styles for checked state */
-  }
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    color: #555;
+}
+
+
+.close-button:hover {
+    color: #000;
+}
+
+.pagination-container{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 1rem; /* Add some padding to make it visually better */
+
+    color: coral;
+}
+
+.pagination-container button{
+    color: cadetblue;
+}

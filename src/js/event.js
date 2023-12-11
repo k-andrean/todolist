@@ -1,7 +1,8 @@
 import { TaskHandler, TaskStorage } from './task.js';
 import { updateTaskCard, updateAddContent } from './update.js';
 import { handleDeleteTaskClick, handleDeleteCardClick } from './handledelete.js';
-
+import { renderPage, goToPage, sortByDate, sortByPriority } from './pagination.js';
+import { currentPage, cardsPerPage } from "./pagination.js";
 
 
 export function initializeSaveLocalStorage(taskStorage){
@@ -29,6 +30,7 @@ export function initializeSubmitNewCardListener(taskStorage) {
     const taskTitleInput = document.getElementById('task-title');
     const taskDescInput = document.getElementById('task-action');
     const radioButtons = dialog.querySelectorAll('form input[name="answer"]');
+    const contentContainer = document.querySelector('.main-content');
 
     submitTaskButton.addEventListener('click', (e) => {
         e.preventDefault();
@@ -49,7 +51,8 @@ export function initializeSubmitNewCardListener(taskStorage) {
         taskStorage.addTaskHandler(taskHandler);
         console.log(taskStorage);
 
-        updateAddContent(taskStorage);
+        // updateAddContent(taskStorage);
+        renderPage(currentPage, taskStorage, contentContainer, cardsPerPage);
 
         taskTitleInput.value = '';
         taskDescInput.value = '';
@@ -150,5 +153,53 @@ export function initializeCloseDialogButtonListener(){
                 parentDialog.close();
             }
         });
+    });
+}
+
+
+export function initializePageButtonListener(){
+    const prevPageButton = document.querySelector('.prev-page');
+    const nextPageButton = document.querySelector('.next-page');
+
+    prevPageButton.addEventListener('click', () => {
+        goToPage(currentPage - 1);
+     });
+     
+    nextPageButton.addEventListener('click', () => {
+        goToPage(currentPage + 1);
+     });
+}
+
+export function initializeSortIconListener(){
+    const sortingIcon = document.getElementById('sortingIcon');
+    const sortingContainer = document.querySelector('.sorting-container');
+
+    sortingIcon.addEventListener('click', () => {
+        sortingContainer.classList.toggle('show-dropdown');
+    });
+}
+
+export function initializeSortButtonListener(contentContainer, taskStorage){
+    const sortingDropdown = document.getElementById('sortingDropdown');
+    const sortingContainer = document.querySelector('.sorting-container');
+
+    sortingDropdown.addEventListener('change', () => {
+        const selectedValue = sortingDropdown.value;
+    
+        if (selectedValue === 'date') {
+            sortByDate(contentContainer, taskStorage);
+        } else if (selectedValue === 'priority') {
+            sortByPriority(contentContainer, taskStorage);
+        }
+    
+        // Hide the dropdown after selecting an option
+        sortingContainer.classList.remove('show-dropdown');
+    });
+    
+    // Close the dropdown if the user clicks outside of it
+    document.addEventListener('click', (event) => {
+        if (!sortingContainer.contains(event.target)) {
+            sortingContainer.classList.remove('show-dropdown');
+        }
     });
 }

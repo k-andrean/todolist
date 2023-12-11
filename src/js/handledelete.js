@@ -1,5 +1,7 @@
 import { updateCard, updateRemainingContent } from "./update.js";
 import { contentElementsMap } from '../index.js';
+import { currentPage, cardsPerPage } from "./pagination.js";
+import { renderPage } from "./pagination.js";
 
 export function handleDeleteTaskClick(img, taskStorage, taskId, taskElementsMap) {
 
@@ -23,6 +25,7 @@ export function handleDeleteTaskClick(img, taskStorage, taskId, taskElementsMap)
 export function handleDeleteCardClick(img, taskStorage) {
     const taskHandlerIdString = img.parentElement.dataset.id;
     const taskHandlerId = parseInt(taskHandlerIdString, 10);
+    const contentContainer = document.querySelector('.main-content');
 
 
     // Show the delete task dialog
@@ -48,7 +51,8 @@ export function handleDeleteCardClick(img, taskStorage) {
             // Close the delete task dialog
             deleteTaskDialog.close();
 
-            updateRemainingContent(contentElementsMap);
+            // updateRemainingContent(contentElementsMap);
+            renderPage(currentPage, taskStorage, contentContainer, cardsPerPage);
 
         } else {
             
