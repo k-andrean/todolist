@@ -1,0 +1,132 @@
+html, body{
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    height: 100%;
+    width: 100%;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-template-rows: 0.5fr 8fr;
+    
+}
+
+.header{
+    
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+.left-header{
+    display: flex;
+
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.right-header{
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+    
+    gap: 1rem;
+}
+
+.profile-icon{
+
+    width: 30px;
+    height: 30px;
+}
+
+.sorting-icon{
+
+    width: 20px;
+    height: 20px;
+}
+
+.sorting-container {
+    position: relative;
+}
+  
+.sorting-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+  
+.sorting-dropdown.show {
+    display: block;
+}
+
+.main-content{
+    background-color:burlywood;
+}
+
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 300px; 
+    max-width: 80%; 
+    z-index: 200; 
+  }
+
+li{
+    list-style-type: none;
+}
+
+li + li{
+    margin-top: 1rem;
+}
+
+.radio-option{
+    display: flex;
+
+    margin-top: 1rem;
+}
+
+.submit-task{
+    margin-top: 1rem;
+}
+
+
+/* Reset radio button styles */
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  /* Style the label for better alignment */
+  label {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  /* Style when the radio button is checked */
+  input[type="radio"]:checked {
+    background-color: #333;
+    border-color: #333;
+    /* You can customize the styles for checked state */
+  }
